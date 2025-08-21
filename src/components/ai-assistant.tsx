@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { Camera, Sparkles, UploadCloud, X } from 'lucide-react';
+import { Camera, Sparkles, UploadCloud, X, Glasses } from 'lucide-react';
 import Image from 'next/image';
 import { runSuggestGlassesStyle } from '@/app/actions';
 import type { SuggestGlassesStyleOutput } from '@/ai/flows/suggest-glasses-style';
