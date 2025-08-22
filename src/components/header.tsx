@@ -8,10 +8,10 @@ import AiAssistant from './ai-assistant';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { name: 'Shop', href: '#featured-products' },
-  { name: 'Collections', href: '#' },
+  { name: 'Belanja', href: '#featured-products' },
+  { name: 'Koleksi', href: '#' },
   { name: 'Blog', href: '#blog' },
-  { name: 'About', href: '#' },
+  { name: 'Tentang', href: '#' },
 ];
 
 export function Header() {
@@ -36,7 +36,7 @@ export function Header() {
                 <SheetTrigger asChild>
                     <Button variant="outline" size="sm" className="gap-2">
                         <Sparkles className="h-4 w-4 text-accent" />
-                        <span className='hidden sm:inline'>AI Style Assistant</span>
+                        <span className='hidden sm:inline'>AI Asisten Gaya</span>
                     </Button>
                 </SheetTrigger>
                 <SheetContent className="w-full max-w-full sm:max-w-lg overflow-y-auto">

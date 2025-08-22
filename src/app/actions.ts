@@ -1,13 +1,13 @@
 'use server';
 
-import type { SuggestGlassesStyleOutput } from '@/lib/types';
+import type { SuggestGlassesStyleOutput } from '@/ai/flows/suggest-glasses-style';
 
 async function suggestGlassesStyle(
   photoDataUri: string
 ): Promise<SuggestGlassesStyleOutput> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    throw new Error('GEMINI_API_KEY is not set.');
+    throw new Error('GEMINI_API_KEY-nya belum di-set, nih.');
   }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
@@ -16,7 +16,7 @@ async function suggestGlassesStyle(
   const mimeType = header.match(/:(.*?);/)?.[1];
 
   if (!mimeType || !data) {
-    throw new Error('Invalid data URI.');
+    throw new Error('Format data URI fotonya salah, coba lagi ya.');
   }
 
   const prompt = `You are an AI assistant specializing in providing eyewear style recommendations based on user facial features. Analyze the uploaded image and suggest frame styles that would best suit the user.
@@ -64,7 +64,7 @@ Example:
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`API request failed: ${response.statusText} - ${errorText}`);
+    throw new Error(`API request gagal: ${response.statusText} - ${errorText}`);
   }
 
   const responseJson = await response.json();
@@ -78,13 +78,13 @@ export async function runSuggestGlassesStyle(
 ): Promise<{ data: SuggestGlassesStyleOutput | null; error: string | null }> {
   try {
     if (!photoDataUri) {
-      throw new Error('Photo data URI is required.');
+      throw new Error('Foto harus di-upload dulu ya.');
     }
     const result = await suggestGlassesStyle(photoDataUri);
     return { data: result, error: null };
   } catch (error) {
     console.error(error);
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred.';
-    return { data: null, error: `AI analysis failed: ${errorMessage}` };
+    const errorMessage = error instanceof Error ? error.message : 'Duh, ada error nih.';
+    return { data: null, error: `Analisis AI gagal: ${errorMessage}` };
   }
 }

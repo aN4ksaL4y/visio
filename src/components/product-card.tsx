@@ -32,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <h3 className="font-headline text-lg font-semibold">{product.name}</h3>
           <p className="mt-1 text-base text-muted-foreground">{product.price}</p>
           <Button className="mt-4 w-full" variant="outline">
-            View Product
+            Lihat Produk
           </Button>
         </div>
       </CardContent>

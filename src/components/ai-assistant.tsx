@@ -51,11 +51,11 @@ export default function AiAssistant() {
       }
       setResult(response.data);
     } catch (error) {
-      console.error('Error getting style suggestion:', error);
+      console.error('Error saat minta rekomendasi:', error);
       toast({
         variant: 'destructive',
-        title: 'An error occurred',
-        description: (error as Error).message || 'Failed to get style suggestions. Please try again.',
+        title: 'Waduh, error nih',
+        description: (error as Error).message || 'Gagal dapet rekomendasi. Coba lagi ya.',
       });
     } finally {
       setIsLoading(false);
@@ -70,7 +70,7 @@ export default function AiAssistant() {
           AI Style Assistant
         </SheetTitle>
         <SheetDescription>
-          Upload a clear, front-facing photo to get personalized frame recommendations.
+          Upload foto muka lo yang jelas dari depan buat dapet rekomendasi frame.
         </SheetDescription>
       </SheetHeader>
       <div className="flex-1 overflow-y-auto p-4 sm:p-6">
@@ -78,26 +78,26 @@ export default function AiAssistant() {
           {!imagePreview && (
             <div className="relative flex h-64 w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-muted/25 transition-colors hover:border-accent">
               <UploadCloud className="mb-2 h-10 w-10 text-muted-foreground" />
-              <p className="text-center text-muted-foreground">Drag & drop or click to upload</p>
+              <p className="text-center text-muted-foreground">Tarik & lepas atau klik buat upload</p>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
                 className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-                aria-label="Upload a photo"
+                aria-label="Upload foto"
               />
             </div>
           )}
 
           {imagePreview && (
             <div className="relative w-full overflow-hidden rounded-lg">
-              <Image src={imagePreview} alt="User photo preview" width={500} height={500} className="h-auto w-full object-contain" />
+              <Image src={imagePreview} alt="Preview foto" width={500} height={500} className="h-auto w-full object-contain" />
               <Button
                 variant="destructive"
                 size="icon"
                 onClick={handleRemoveImage}
                 className="absolute right-2 top-2 h-8 w-8 rounded-full"
-                aria-label="Remove image"
+                aria-label="Hapus foto"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -105,27 +105,27 @@ export default function AiAssistant() {
           )}
 
           <Button onClick={handleSubmit} disabled={!imagePreview || isLoading} className="w-full" size="lg">
-            {isLoading ? 'Analyzing...' : 'Get Recommendations'}
+            {isLoading ? 'Lagi dianalisis...' : 'Kasih Rekomendasi'}
           </Button>
 
           {isLoading && <LoadingSkeleton />}
           
           {result && (
             <div className="space-y-6 pt-4">
-              <h3 className="text-xl font-semibold">Your Style Results</h3>
+              <h3 className="text-xl font-semibold">Hasil Analisis Gaya Lo</h3>
               <Card>
                 <CardContent className="p-4">
-                  <p className="mb-2 font-medium">Style Match Score</p>
+                  <p className="mb-2 font-medium">Skor Kecocokan</p>
                   <div className="flex items-center gap-4">
                     <Progress value={result.styleMatchScore * 100} className="h-3" />
                     <span className="font-bold text-primary">{Math.round(result.styleMatchScore * 100)}%</span>
                   </div>
-                   <p className="text-xs text-muted-foreground mt-1">How well these styles match your features.</p>
+                   <p className="text-xs text-muted-foreground mt-1">Seberapa cocok gaya ini sama muka lo.</p>
                 </CardContent>
               </Card>
 
               <div>
-                <h4 className="mb-3 font-medium">Suggested Frame Styles</h4>
+                <h4 className="mb-3 font-medium">Rekomendasi Gaya Frame</h4>
                 <div className="grid grid-cols-2 gap-4">
                   {result.suggestedFrameStyles.map((style) => (
                     <Card key={style} className="flex flex-col items-center justify-center p-4 text-center">
@@ -146,7 +146,7 @@ export default function AiAssistant() {
 function LoadingSkeleton() {
     return (
         <div className="space-y-6 pt-4">
-            <h3 className="text-xl font-semibold">Analyzing your style...</h3>
+            <h3 className="text-xl font-semibold">Lagi analisis gaya lo...</h3>
             <Card>
                 <CardContent className="p-4">
                     <Skeleton className="h-5 w-1/3 mb-2" />

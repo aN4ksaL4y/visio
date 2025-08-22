@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'VisioStyle Optics',
-  description: 'Modern Eyewear for the Discerning Individual',
+  description: 'Kacamata Kekinian Buat Kamu',
 };
 
 export default function RootLayout({

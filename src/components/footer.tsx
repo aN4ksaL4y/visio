@@ -9,29 +9,29 @@ export function Footer() {
 
   const footerSections = [
     {
-      title: 'Shop',
+      title: 'Belanja',
       links: [
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Men', href: '#' },
-        { name: 'Women', href: '#' },
-        { name: 'Collections', href: '#' },
+        { name: 'Produk Baru', href: '#' },
+        { name: 'Pria', href: '#' },
+        { name: 'Wanita', href: '#' },
+        { name: 'Koleksi', href: '#' },
       ],
     },
     {
-      title: 'About',
+      title: 'Tentang Kami',
       links: [
-        { name: 'Our Story', href: '#' },
+        { name: 'Cerita Kami', href: '#' },
         { name: 'Blog', href: '#' },
-        { name: 'Contact Us', href: '#' },
+        { name: 'Kontak', href: '#' },
       ],
     },
     {
-      title: 'Support',
+      title: 'Bantuan',
       links: [
         { name: 'FAQ', href: '#' },
-        { name: 'Shipping & Returns', href: '#' },
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms of Service', href: '#' },
+        { name: 'Pengiriman & Pengembalian', href: '#' },
+        { name: 'Kebijakan Privasi', href: '#' },
+        { name: 'Ketentuan Layanan', href: '#' },
       ],
     },
   ];
@@ -46,7 +46,7 @@ export function Footer() {
               <span className="font-headline text-xl font-semibold">VisioStyle Optics</span>
             </a>
             <p className="mt-4 max-w-xs text-muted-foreground">
-              Premium eyewear designed for the modern individual.
+              Kacamata premium buat kamu yang modern.
             </p>
           </div>
           {footerSections.map((section) => (
@@ -65,7 +65,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center justify-between border-t pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} VisioStyle Optics. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} VisioStyle Optics. Hak cipta dilindungi.</p>
           <div className="mt-4 flex gap-4 sm:mt-0">
             {socialLinks.map((social) => (
               <a key={social.name} href={social.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
